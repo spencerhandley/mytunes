@@ -1,31 +1,30 @@
 // SongModel.js - Defines a backbone model class for songs.
 var SongModel = Backbone.Model.extend({
   initialize: function(){
-    this.set({inQueue: false})
+    this.set({playCount: 0})
   },
   play: function(){
     // Triggering an event here will also trigger the event on the collection
+    this.increaseCount();
     this.trigger('play', this);
   },
   enqueue: function(){
     app.attributes.songQueue.add(this);
     this.set({inQueue: true});
-    console.log(app.attributes.songQueue.length)
     if(app.attributes.songQueue.models.length === 1){
       app.attributes.songQueue.trigger('hasSongs')
     }
+    app.attributes.songQueue.trigger('change')
   },
   dequeue: function(){
     if (this === app.attributes.songQueue.models[0] && (app.attributes.songQueue.models.length > 1)) {
       app.attributes.songQueue.remove(this);
-      console.log('should change songs')
       app.attributes.songQueue.trigger('change')
+
       app.attributes.songQueue.trigger('hasSongs');
     } else {
       app.attributes.songQueue.remove(this);
-      console.log('should not change songs')
       app.attributes.songQueue.trigger('change')
-      console.log(app.attributes)
     }
   },
   star: function(){
@@ -33,6 +32,11 @@ var SongModel = Backbone.Model.extend({
   },
   unstar: function(){
     this.set({starred: false})
+  },
+  increaseCount: function(){
+    this.set({playCount: this.get('playCount')+1});
+    console.log("count increased")
+    console.log(this.ge)
   }
 
 
