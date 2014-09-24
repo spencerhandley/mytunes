@@ -6,6 +6,7 @@
     <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
+    <script src="bower_components/require/build/require.min.js"></script>
 
     <script src="data/data.js"></script>
 
@@ -16,15 +17,19 @@
 
     <script src="views/PlayerView.js"></script>
     <script src="views/LibraryView.js"></script>
+    <script src="views/SongQueueView.js"></script>
+    <script src="views/SongQueueEntryView.js"></script>
+
     <script src="views/LibraryEntryView.js"></script>
     <script src="views/AppView.js"></script>
 
     <script>
+    var app;
       $(function(){
         // set up model objects
         var library = new Songs(songData);
-        var app = new AppModel({library: library});
-
+        console.log(library)
+        app = new AppModel({library: library});
         // build a view for the top level of the whole app
         var appView = new AppView({model: app});
 
