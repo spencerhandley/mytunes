@@ -4,7 +4,7 @@ var AppModel = Backbone.Model.extend({
   initialize: function(params){
     if (localStorage.getItem('localQueue') !== null) {
       console.log("using local storage")
-      this.set('songQueue', new SongQueue(jQuery.parseJSON(localStorage.getItem('localQueue'))));
+      this.set('songQueue', new SongQueue($.parseJSON(localStorage.getItem('localQueue'))));
       if(this.get('songQueue').models.length >0){
         console.log('Queue in storage has length');
         this.attributes.songQueue.trigger('hasSongs');
@@ -29,10 +29,10 @@ var AppModel = Backbone.Model.extend({
     getting called from the window (unless we override it, as we do here). */
 
 
-    params.library.on('play', function(song){
-      // if(song !== this.get('currentSong')){
-      this.set('currentSong', song);
-    }, this);
+    // params.library.on('play', function(song){
+    //   // if(song !== this.get('currentSong')){
+    //   this.set('currentSong', song);
+    // }, this);
   }
 
 });

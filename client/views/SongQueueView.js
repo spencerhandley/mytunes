@@ -29,7 +29,7 @@ className: "table",
     // see http://api.jquery.com/detach/
     this.$el.children().detach();
 
-    this.$el.html('<tr><th>Queue</th></tr><tr><td class="subheader">Artist</td><td class="subheader">Title</td><td class="subheader "><span class="pull-right">Remove</span></td></tr>').append(
+    this.$el.html('<tr><th>Queue</th><td></td><td></td></tr><tr><td class="subheader">Artist</td><td class="subheader">Title</td><td class="subheader "><span class="pull-right">Remove</span></td></tr>').append(
       this.collection.map(function(song){
         return new SongQueueEntryView({model: song}).render();
       })

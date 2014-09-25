@@ -1,6 +1,9 @@
 body {
   margin-top: 50px;
-  background: url("http://brazilianxd.com/wp-content/uploads/2014/01/galaxy17.jpg");
+  background: url("../images/SummerBg.jpg") no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  /*url("http://brazilianxd.com/wp-content/uploads/2014/01/galaxy17.jpg")*/
   background-color: #111;
   color: #bbb;
   font-family:sans-serif;
@@ -34,3 +37,8 @@ table + table {
   font-weight: 100;
   color:#666;
 }
+
+span + span {
+  margin-left: 50px;
+}
+
