@@ -1,12 +1,14 @@
 body {
+  margin-top: 50px;
+  background: url("http://brazilianxd.com/wp-content/uploads/2014/01/galaxy17.jpg");
   background-color: #111;
-  color: white;
+  color: #bbb;
   font-family:sans-serif;
   font-size: 20px;
 }
 
 table {
-  background-color: #444;
+  background: rgba(0,0,0,.8);
 }
 
 th {
@@ -22,4 +24,13 @@ button {
 
 .glyphicon {
   color: #f0ad4e;
+}
+
+table + table {
+  margin-top: 150px;
+}
+
+.subheader {
+  font-weight: 100;
+  color:#666;
 }
