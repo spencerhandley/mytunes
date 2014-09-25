@@ -1,21 +1,59 @@
 body {
   margin-top: 50px;
-  background: url("../images/SummerBg.jpg") no-repeat;
-  background-size: 100%;
-  background-attachment: fixed;
+
+
   /*url("http://brazilianxd.com/wp-content/uploads/2014/01/galaxy17.jpg")*/
   background-color: #111;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   color: #bbb;
   font-family:sans-serif;
   font-size: 20px;
 }
+.summer {
+  background: url("../images/SummerBg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
+.spring {
+  background: url("../images/SpringBg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.winter {
+  background: url("../images/WinterBG.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.fall {
+  background: url("../images/Autumn.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 table {
   background: rgba(0,0,0,.8);
 }
 
+.table-white {
+  background: rgba(240,240,240,.3);
+  color: #222;
+}
+
 th {
   font-size: 30px;
+  font-weight: 340;
+  color: #666;
 }
 tr {
   width: 600px;
@@ -23,9 +61,11 @@ tr {
 
 button {
   float: right;
+  opacity: .6;
 }
 
 .glyphicon {
+  margin-left: 20px;
   color: #f0ad4e;
 }
 
@@ -38,7 +78,30 @@ table + table {
   color:#666;
 }
 
-span + span {
-  margin-left: 50px;
+a {
+  text-decoration: none;
+  color: #888;
 }
+a:hover {
+  text-decoration: none;
+  color: #888;
+}
+
+.button-summer:hover {
+  color: #f0ad4e;
+}
+.button-fall:hover {
+  color: #DB3535;
+}
+.button-winter:hover {
+  color: #9DC2EB;
+}
+.button-spring:hover {
+  color: #92D48C;
+}
+
+a + a {
+  margin-left: 250px;
+}
+
 

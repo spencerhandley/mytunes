@@ -11,8 +11,6 @@ var AppModel = Backbone.Model.extend({
         this.set('currentSong', this.attributes.songQueue.models[0]);
         this.attributes.currentSong.trigger("change:currentSong");
 
-
-
       }
     } else {
       this.set('songQueue', new SongQueue());
@@ -29,10 +27,30 @@ var AppModel = Backbone.Model.extend({
     getting called from the window (unless we override it, as we do here). */
 
 
-    // params.library.on('play', function(song){
-    //   // if(song !== this.get('currentSong')){
-    //   this.set('currentSong', song);
-    // }, this);
+    params.library.on('play', function(song){
+      var id = song.attributes.SCid
+      console.log('id: '+id)
+      // if(song !== this.get('currentSong')){
+      this.set('currentSong', song);
+      SC.stream("/tracks/"+id, function(sound){
+        console.log("play", sound)
+        sound.play();
+
+      });
+
+    }, this);
+    params.library.on('stop', function(song){
+      var id = song.attributes.SCid
+      console.log('id: '+id)
+      // if(song !== this.get('currentSong')){
+      this.set('currentSong', song);
+      SC.stream("/tracks/"+id, function(sound){
+        console.log("stopped",sound)
+        sound.stop();
+      });
+
+    }, this);
+
   }
 
 });

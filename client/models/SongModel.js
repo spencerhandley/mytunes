@@ -39,7 +39,9 @@ var SongModel = Backbone.Model.extend({
     }
   },
   dequeue: function(){
+    this.trigger('stop',this);
     if (this === app.attributes.songQueue.models[0] && (app.attributes.songQueue.models.length > 1)) {
+
       app.attributes.songQueue.remove(this);
       app.attributes.songQueue.trigger('change');
 
