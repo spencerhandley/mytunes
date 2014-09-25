@@ -6,8 +6,15 @@ var SongQueueView = Backbone.View.extend({
   initialize: function() {
     var that = this
     this.render();
-    var that = this
+    var that = this;
+    if (this.collection.models.length > 0) {
+      console.log(this.collection.models.length)
+      console.log("I should definitely be playing")
+      console.log(this.collection.models[0])
+      this.collection.models[0].play();
+    }
     this.collection.on('hasSongs', function(){
+      console.log("should be playing")
       that.collection.models[0].play();
       that.collection.models[0].trigger('change')
       that.render()

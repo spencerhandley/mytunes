@@ -4,14 +4,21 @@ var AppModel = Backbone.Model.extend({
   initialize: function(params){
     if (localStorage.getItem('localQueue') !== null) {
       console.log("using local storage")
-      console.log(jQuery.parseJSON(localStorage.getItem('localQueue')))
-
       this.set('songQueue', new SongQueue(jQuery.parseJSON(localStorage.getItem('localQueue'))));
-      // this.set('songQueue', new SongQueue());
+      if(this.get('songQueue').models.length >0){
+        console.log('Queue in storage has length');
+        this.attributes.songQueue.trigger('hasSongs');
+        this.set('currentSong', this.attributes.songQueue.models[0]);
+        this.attributes.currentSong.trigger("change:currentSong");
+
+
+
+      }
     } else {
+      this.set('songQueue', new SongQueue());
       console.log("using new model")
+      this.set('currentSong', new SongModel());
     }
-    this.set('currentSong', new SongModel());
 
 
     /* Note that 'this' is passed as the third argument. That third argument is
