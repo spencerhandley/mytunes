@@ -5,7 +5,10 @@ var SongModel = Backbone.Model.extend({
   },
   play: function(){
     // Triggering an event here will also trigger the event on the collection
-    this.increaseCount();
+    if(this !== app.get('currentSong')){
+      this.increaseCount();
+
+    }
     this.trigger('play', this);
   },
   enqueue: function(){
@@ -15,6 +18,8 @@ var SongModel = Backbone.Model.extend({
       app.attributes.songQueue.trigger('hasSongs')
     }
     app.attributes.songQueue.trigger('change')
+    console.log(app.attributes.songQueue)
+    localStorage.setItem('localQueue', JSON.stringify(app.attributes.songQueue))
   },
   dequeue: function(){
     if (this === app.attributes.songQueue.models[0] && (app.attributes.songQueue.models.length > 1)) {
@@ -26,6 +31,8 @@ var SongModel = Backbone.Model.extend({
       app.attributes.songQueue.remove(this);
       app.attributes.songQueue.trigger('change')
     }
+    localStorage.setItem('localQueue', JSON.stringify(app.attributes.songQueue))
+
   },
   star: function(){
     this.set({starred: true})

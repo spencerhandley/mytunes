@@ -2,6 +2,8 @@
 var SongQueue = Songs.extend({
 
   initialize: function(){
+    // if (//exists in local storage
+    //   )
 
   }
 

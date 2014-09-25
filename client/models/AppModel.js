@@ -2,7 +2,15 @@
 var AppModel = Backbone.Model.extend({
 
   initialize: function(params){
-    this.set('songQueue', new SongQueue());
+    if (localStorage.getItem('localQueue') !== null) {
+      console.log("using local storage")
+      console.log(jQuery.parseJSON(localStorage.getItem('localQueue')))
+
+      this.set('songQueue', new SongQueue(jQuery.parseJSON(localStorage.getItem('localQueue'))));
+      // this.set('songQueue', new SongQueue());
+    } else {
+      console.log("using new model")
+    }
     this.set('currentSong', new SongModel());
 
 
