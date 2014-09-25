@@ -19,3 +19,7 @@ tr {
 button {
   float: right;
 }
+
+.glyphicon {
+  color: #f0ad4e;
+}

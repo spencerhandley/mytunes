@@ -3,8 +3,9 @@ var LibraryEntryView = Backbone.View.extend({
 
   tagName: 'tr',
 
-  template: _.template('<td>(<%= artist %>)</td><td><%= title %><button class="add-to-q">Add</button><td><%= playCount %></td></td>'),
+  template: _.template('<td><span class="glyphicon <%= starred %>"></span></td><td>(<%= artist %>)</td><td><%= title %></td><td><button class="add-to-q btn btn-primary pull-left">Add</button></td><td><%= playCount %></td>'),
   initialize: function(){
+    console.log(this.model.get('starred'))
     var that = this
     this.model.on('play', function(){
       console.log("changed the library entry")
@@ -16,7 +17,16 @@ var LibraryEntryView = Backbone.View.extend({
     'click .add-to-q': function(){
       this.model.enqueue()
       this.render()
+    },
+    'click .glyphicon': function(){
+      if(this.model.get('starred') === "glyphicon-star"){
+        this.model.unstar()
+      } else {
+        this.model.star()
+      }
+      this.render()
     }
+
 
   },
 

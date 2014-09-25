@@ -2,6 +2,7 @@
 var SongModel = Backbone.Model.extend({
   initialize: function(){
     this.set({playCount: 0})
+    this.set({starred: "glyphicon-star-empty"})
   },
   play: function(){
     // Triggering an event here will also trigger the event on the collection
@@ -51,10 +52,10 @@ var SongModel = Backbone.Model.extend({
 
   },
   star: function(){
-    this.set({starred: true})
+    this.set({starred: "glyphicon-star"})
   },
   unstar: function(){
-    this.set({starred: false})
+    this.set({starred: "glyphicon-star-empty"})
   },
   increaseCount: function(){
     this.set({playCount: this.get('playCount')+1});
